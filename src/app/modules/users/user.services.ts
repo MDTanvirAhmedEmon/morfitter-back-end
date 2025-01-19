@@ -1,6 +1,6 @@
 import AppError from '../../errors/AppError';
-import { Customer } from '../customers/customer.model';
-import { ICustomer } from './../customers/customer.interface';
+import { Customer } from '../trainee/trainee.model';
+import { ICustomer } from '../trainee/trainee.interface';
 import { IUser } from "./user.interface";
 import { User } from "./user.model"
 
