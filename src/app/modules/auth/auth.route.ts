@@ -17,7 +17,7 @@ router.post('/refresh-token',
 )
 
 router.post('/change-password',
-    auth(ENUM_USER_ROLE.CUSTOMER, ENUM_USER_ROLE.ADMIN)
+    auth(ENUM_USER_ROLE.TRAINEE, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.TRAINER, ENUM_USER_ROLE.SUPER_ADMIN)
     , authController.changePassword)
 
 router.post(
