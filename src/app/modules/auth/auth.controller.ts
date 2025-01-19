@@ -57,8 +57,7 @@ const changePassword = async (req: Request, res: Response, next: NextFunction) =
   try {
     const user = req.user;
     const data = req.body;
-    console.log(user)
-    console.log(data)
+
     const result = await authServices.changePassword(user, data)
 
     res.status(200).json({
@@ -74,6 +73,7 @@ const changePassword = async (req: Request, res: Response, next: NextFunction) =
 const forgetPassword = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email } = req.body;
+    console.log(email);
     const result = await authServices.forgetPassword(email)
 
     res.status(200).json({
