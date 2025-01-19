@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { customerController } from "./user.controller";
+import { traineeController } from "./user.controller";
 // import validateRequest from "../../middlewares/validateRequest";
 // import { userValidationSchema } from "./user.validation";
 
 const router = Router();
 
-router.post('/create-customer',
+router.post('/create-trainee',
     // validateRequest(userValidationSchema),
-     customerController.createCustomer)
+    traineeController.createTrainee)
 
 export const UserRouter = router;

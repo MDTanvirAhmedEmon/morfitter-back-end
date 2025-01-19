@@ -1,14 +1,14 @@
 import AppError from '../../errors/AppError';
-import { Customer } from '../trainee/trainee.model';
-import { ICustomer } from '../trainee/trainee.interface';
+import { Trainee } from '../trainee/trainee.model';
+import { ITrainee } from '../trainee/trainee.interface';
 import { IUser } from "./user.interface";
 import { User } from "./user.model"
 
-const createCustomer = async (validateUserInfo: Partial<IUser>, validateCustomerData: ICustomer): Promise<ICustomer | undefined> => {
+const createTrainee = async (validateUserInfo: Partial<IUser>, validateTraineeData: ITrainee): Promise<ITrainee | undefined> => {
     const userData = {
         email: validateUserInfo?.email,
         password: validateUserInfo?.password,
-        role: "customer",
+        role: "trainee",
         status: 'in-progress',
     }
     const isExist = await User.findOne({ email: userData.email })
@@ -21,12 +21,12 @@ const createCustomer = async (validateUserInfo: Partial<IUser>, validateCustomer
     console.log('result', result)
 
     if (result?._id) {
-        validateCustomerData.user = result?._id
-        const customerResult = await Customer.create(validateCustomerData)
-        return customerResult
+        validateTraineeData.user = result?._id
+        const traineeResult = await Trainee.create(validateTraineeData)
+        return traineeResult
     }
 }
 
-export const customerServices = {
-    createCustomer,
+export const traineeServices = {
+    createTrainee,
 }
