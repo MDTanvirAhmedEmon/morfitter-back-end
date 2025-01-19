@@ -31,7 +31,7 @@ export const traineeValidatedSchema = z.object({
 
     title: z.string({
         invalid_type_error: "Title must be a string",
-    }).optional(),
+    }),
 
     userName: z.string({
         required_error: "Username is required",
@@ -58,11 +58,11 @@ export const traineeValidatedSchema = z.object({
 
     height: z.number({
         invalid_type_error: "Height must be a number",
-    }).optional(),
+    }),
 
     weight: z.number({
         invalid_type_error: "Weight must be a number",
-    }).optional(),
+    }),
 
     fitterGoal: z.string({
         required_error: "Fitter goal is required",
@@ -71,15 +71,15 @@ export const traineeValidatedSchema = z.object({
 
     interest: z.string({
         invalid_type_error: "Interest must be a string",
-    }).optional(),
+    }),
 
     towardsGoal: z.string({
         invalid_type_error: "Towards goal must be a string",
-    }).optional(),
+    }),
 
     achieveGoal: z.string({
         invalid_type_error: "Achieve goal must be a string",
-    }).optional(),
+    }),
 
     user: z.custom<Types.ObjectId>(
         (val) => Types.ObjectId.isValid(val),
