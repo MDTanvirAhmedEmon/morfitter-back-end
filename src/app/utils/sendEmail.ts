@@ -8,7 +8,7 @@ const generateResetPasswordEmail = (token: string): string => `
       <p style="font-size: 16px; color: #666666;">You have requested to reset your password. Use the verification code below to proceed.</p>
     </div>
     <div style="text-align: center; margin: 20px 0;">
-      <div style="display: inline-block; padding: 15px; background-color: #1ABC9C; color: #ffffff; font-size: 24px; border-radius: 8px;">
+      <div style="display: inline-block; padding: 15px; background-color: #e26972; color: #ffffff; font-size: 24px; border-radius: 8px;">
         ${token}
       </div>
     </div>
