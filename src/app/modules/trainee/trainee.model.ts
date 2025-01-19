@@ -10,18 +10,18 @@ const traineeSchema: Schema<ITrainee> = new Schema({
     },
     gender: { type: String, enum: ['male', 'female', 'others'], required: true },
     contactNo: { type: String, required: true },
-    profileImageUrl: { type: String, required: false },
+    profileImageUrl: { type: String },
     title: { type: String, required: false },
     userName: { type: String, required: true, unique: true },
-    dob: { type: String, required: true },  // Use `Date` type if possible
+    dob: { type: Date, required: true },  // Use `Date` type if possible
     country: { type: String, required: true },
     city: { type: String, required: true },
-    height: { type: Number, required: false },
-    weight: { type: Number, required: false },
+    height: { type: Number, required: true },
+    weight: { type: Number, required: true },
     fitterGoal: { type: String, required: true },  // Enum can be added if predefined values are known
-    interest: { type: String, required: false },
-    towardsGoal: { type: String, required: false },
-    achieveGoal: { type: String, required: false },
+    interest: { type: String, required: true },
+    towardsGoal: { type: String, required: true },
+    achieveGoal: { type: String, required: true },
     user: {
         type: Schema.Types.ObjectId,
         required: [true, 'User id is required'],

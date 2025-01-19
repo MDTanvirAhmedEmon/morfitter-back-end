@@ -6,10 +6,10 @@ export type ITrainee = {
     address: string;
     gender: 'male' | 'female' | 'others';
     contactNo: string;
-    profileImageUrl: string;
+    profileImageUrl?: string;
     title: string;
     userName: string;
-    dob: string;
+    dob: Date;
     country: string;
     city: string;
     height: number;
