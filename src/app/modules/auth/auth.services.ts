@@ -8,8 +8,9 @@ import bcrypt from 'bcrypt';
 import { sendEmail } from '../../utils/sendEmail';
 
 const logInUser = async (logInData: ILoginUser): Promise<any> => {
-
-  const isExist = await User.findOne({ email: logInData.email })
+  console.log('before login', logInData);
+  const isExist = await User.findOne({ email: logInData?.email })
+  console.log(isExist);
   if (!isExist) {
     throw new AppError(404, 'User not found!')
   }

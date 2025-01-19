@@ -5,6 +5,7 @@ import config from "../../config";
 const logInUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const loginData = req.body;
+    console.log('controlling login', loginData);
     const result = await authServices.logInUser(loginData)
 
     const { refreshToken, ...others } = result
