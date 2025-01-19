@@ -3,18 +3,26 @@ import { model, Schema } from "mongoose";
 import { IChat, IChatAdmin } from "./chats.interface";
 
 const chatsSchema: Schema<IChat> = new Schema({
-    sender:
-    {
-        type: Schema.Types.ObjectId,
-        required: [true, 'User id is required'],
-        ref: 'Customer',
-    },
-    receiver:
-    {
-        type: Schema.Types.ObjectId,
-        required: [true, 'User id is required'],
-        ref: 'Customer',
-    },
+  sender: {
+    type: Schema.Types.ObjectId,
+    required: [true, 'Sender id is required'],
+    refPath: 'senderType',
+  },
+  senderType: {
+    type: String,
+    required: true,
+    enum: ['Trainee', 'Trainer'],
+  },
+  receiver: {
+    type: Schema.Types.ObjectId,
+    required: [true, 'Receiver id is required'],
+    refPath: 'receiverType',
+  },
+  receiverType: {
+    type: String,
+    required: true,
+    enum: ['Trainee', 'Trainer'],
+  },
     message:
     {
         type: String, required: true

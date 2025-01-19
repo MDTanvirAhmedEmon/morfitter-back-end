@@ -1,20 +1,20 @@
 import { NextFunction, Request, Response } from "express";
-import { customerServices } from "./user.services";
+import { traineeServices } from "./user.services";
 import { userValidationSchema } from "./user.validation";
 import { traineeValidatedSchema } from "../trainee/trainee.validation";
 
 
-const createCustomer = async (req: Request, res: Response, next: NextFunction) => {
+const createTrainee = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { userInfo, customerData } = req.body;
-        console.log(userInfo, customerData);
-        // console.log(userInfo, customerData)
+        const { userInfo, traineeData } = req.body;
+        console.log(userInfo, traineeData);
+        // console.log(userInfo, traineeData)
         const validateUserInfo = userValidationSchema.parse(userInfo)
-        const validateCustomerData = traineeValidatedSchema.parse(customerData)
-        const result = await customerServices.createCustomer(validateUserInfo, validateCustomerData);
+        const validateTraineeData = traineeValidatedSchema.parse(traineeData)
+        const result = await traineeServices.createTrainee(validateUserInfo, validateTraineeData);
         res.status(200).json({
             success: true,
-            message: 'user created successfully',
+            message: 'trainee created successfully',
             data: result,
         })
         // sendResponse(res, {
@@ -29,6 +29,6 @@ const createCustomer = async (req: Request, res: Response, next: NextFunction) =
     }
 }
 
-export const customerController = {
-    createCustomer,
+export const traineeController = {
+    createTrainee,
 }
