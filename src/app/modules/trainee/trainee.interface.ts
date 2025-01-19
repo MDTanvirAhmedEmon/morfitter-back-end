@@ -18,5 +18,5 @@ export type ITrainee = {
     interest: string;
     towardsGoal: string;
     achieveGoal: string;
-    user: Types.ObjectId;
+    user?: Types.ObjectId;
 }

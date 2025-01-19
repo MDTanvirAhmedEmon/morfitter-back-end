@@ -8,7 +8,6 @@ const createTrainee = async (req: Request, res: Response, next: NextFunction) =>
     try {
         const { userInfo, traineeData } = req.body;
         console.log(userInfo, traineeData);
-        // console.log(userInfo, traineeData)
         const validateUserInfo = userValidationSchema.parse(userInfo)
         const validateTraineeData = traineeValidatedSchema.parse(traineeData)
         const result = await traineeServices.createTrainee(validateUserInfo, validateTraineeData);

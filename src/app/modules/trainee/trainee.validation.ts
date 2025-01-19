@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 import { z } from "zod";
 
+
 export const traineeValidatedSchema = z.object({
     firstName: z.string({
         required_error: "First name is required",
@@ -80,9 +81,7 @@ export const traineeValidatedSchema = z.object({
     achieveGoal: z.string({
         invalid_type_error: "Achieve goal must be a string",
     }),
-
-    user: z.custom<Types.ObjectId>(
-        (val) => Types.ObjectId.isValid(val),
-        { message: 'Invalid user ID' }
-    ),
+    user: z.custom<Types.ObjectId>((val) => Types.ObjectId.isValid(val), {
+        message: 'Invalid user ID',
+    }).optional(),
 });
