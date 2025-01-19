@@ -5,6 +5,7 @@ import config from "../../config";
 const logInUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const loginData = req.body;
+    console.log('controlling login', loginData);
     const result = await authServices.logInUser(loginData)
 
     const { refreshToken, ...others } = result
@@ -56,8 +57,7 @@ const changePassword = async (req: Request, res: Response, next: NextFunction) =
   try {
     const user = req.user;
     const data = req.body;
-    console.log(user)
-    console.log(data)
+
     const result = await authServices.changePassword(user, data)
 
     res.status(200).json({
@@ -73,6 +73,7 @@ const changePassword = async (req: Request, res: Response, next: NextFunction) =
 const forgetPassword = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email } = req.body;
+    console.log(email);
     const result = await authServices.forgetPassword(email)
 
     res.status(200).json({

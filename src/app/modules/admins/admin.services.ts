@@ -8,7 +8,15 @@ const createAdmin = async (data: IAdmin): Promise<IAdmin> => {
     if (isExist) {
         throw new AppError(409, 'Admin already exist!')
     }
-    const result = await Admin.create(data)
+    const adminData ={
+        firstName: data?.firstName,
+        lastName: data?.lastName,
+        email: data?.email,
+        password: data?.password,
+        "role": "admin",
+        "status": "in-progress"
+    }
+    const result = await Admin.create(adminData)
     return result
 }
 

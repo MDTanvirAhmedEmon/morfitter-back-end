@@ -8,8 +8,9 @@ import bcrypt from 'bcrypt';
 import { sendEmail } from '../../utils/sendEmail';
 
 const logInUser = async (logInData: ILoginUser): Promise<any> => {
-
-  const isExist = await User.findOne({ email: logInData.email })
+  console.log('before login', logInData);
+  const isExist = await User.findOne({ email: logInData?.email })
+  console.log(isExist);
   if (!isExist) {
     throw new AppError(404, 'User not found!')
   }
@@ -63,7 +64,6 @@ const createRefreshToken = async (token: string): Promise<any> => {
 
   const { id } = verifiedToken;
 
-  // tumi delete hye gso  kintu tumar refresh token ase
   // checking deleted user's refresh token
 
   const isExist = await User.findOne({ _id: id });
@@ -90,7 +90,6 @@ const createRefreshToken = async (token: string): Promise<any> => {
   }
 
 }
-
 
 
 const changePassword = async (user: any, data: { oldPassword: string, newPassword: string }): Promise<null> => {
@@ -203,7 +202,7 @@ const resetPassword = async (data: any): Promise<any> => {
     throw new AppError(400, 'Verification code expired');
   }
 
-  const hashedNewPassword = await bcrypt.hash(data.newPassword, Number(config.bcrypt_salt_rounds))
+  const hashedNewPassword = await bcrypt.hash(data?.newPassword, Number(config.bcrypt_salt_rounds))
 
   const result = await User.findOneAndUpdate(
     {
